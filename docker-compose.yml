@@ -17,10 +17,7 @@ services:
     env_file:
     - db_auth.env
     - redmine_mysql.env
-    environment:
-#    - TZ=Asia/Kolkata
-    - REDMINE_PORT=10083
-
+    - redmine.env
     ports:
     - "10083:80"
     volumes:
