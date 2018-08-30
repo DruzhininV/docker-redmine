@@ -3,6 +3,7 @@ version: '3'
 services:
   mysql:
     image: sameersbn/mysql:5.7.22-1
+    container_name: redmine_db
     environment:
     - DB_USER=redmine
     - DB_PASS=password
@@ -12,6 +13,7 @@ services:
 
   redmine:
     image: sameersbn/redmine:3.4.6
+    container_name: redmine
     depends_on:
     - mysql
     environment:
