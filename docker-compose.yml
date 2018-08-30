@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   mysql:
@@ -60,3 +60,9 @@ services:
     - "10083:80"
     volumes:
     - /srv/docker/redmine/redmine:/home/redmine/data
+
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
