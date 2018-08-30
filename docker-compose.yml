@@ -4,10 +4,8 @@ services:
   mysql:
     image: sameersbn/mysql:5.7.22-1
     container_name: redmine_db
-    environment:
-    - DB_USER=redmine
-    - DB_PASS=password
-    - DB_NAME=redmine_production
+    env_file:
+    - db_auth.env
     volumes:
     - mysql_data:/var/lib/mysql
 
@@ -16,15 +14,14 @@ services:
     container_name: redmine
     depends_on:
     - mysql
+    env_file:
+    - db_auth.env
     environment:
     - TZ=Asia/Kolkata
 
     - DB_ADAPTER=mysql2
     - DB_HOST=mysql
     - DB_PORT=3306
-    - DB_USER=redmine
-    - DB_PASS=password
-    - DB_NAME=redmine_production
 
     - REDMINE_PORT=10083
     - REDMINE_HTTPS=false
