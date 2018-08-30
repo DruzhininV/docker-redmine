@@ -8,7 +8,7 @@ services:
     - DB_PASS=password
     - DB_NAME=redmine_production
     volumes:
-    - /srv/docker/redmine/mysql:/var/lib/mysql
+    - mysql_data:/var/lib/mysql
 
   redmine:
     image: sameersbn/redmine:3.4.6
@@ -59,8 +59,13 @@ services:
     ports:
     - "10083:80"
     volumes:
-    - /srv/docker/redmine/redmine:/home/redmine/data
+    - redmine_data:/home/redmine/data
 
+volumes:
+  redmine_data:
+    driver: local
+  mysql_data:
+    driver: local
 
 networks:
   default:
